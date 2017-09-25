@@ -4,6 +4,7 @@ import './App.css';
 
 import BooksTable from "./BooksTable";
 import ShowToRead from "./ShowToRead";
+import Search from "./Search";
 
 
 
@@ -32,26 +33,30 @@ class App extends Component {
             }
         ]
 
+
     }
-    showToRead = (BOOKS)=>{
-        this.setState((state)=>{
-            BOOKS: this.state.BOOKS.filter((b)=>b.bookCategory === "To Read" )
-        })
-    }
+    // showToRead = (book)=>{
+    //     this.setState((state)=>{
+    //         BOOKS: state.BOOKS.map((book)=>(book.bookCategory === "To Read") )
+    //     })
+    // }
+    // updateQuery = (query)=>{
+    //     this.setState( {query: query.trim()} )
+    // }
 
   render() {
+
+
     return (
         <div>
-            <div>
-                {/*<BooksTable*/}
-                    {/*books={this.state.BOOKS}*/}
+            <Search
+                books={this.state.BOOKS}
+                query={this.state.query}
 
-                {/*/>*/}
-                <button onClick={()=>this.showToRead(this.state.BOOKS)}>
-                    click
-                </button>
+            />
+            <BooksTable books={this.state.BOOKS}/>
 
-            </div>
+
 
 
         </div>

@@ -20,7 +20,7 @@ class BooksTable extends Component{
 
         return(
             <div>
-                {/*{rows}*/}
+                {rows}
 
 
             </div>
