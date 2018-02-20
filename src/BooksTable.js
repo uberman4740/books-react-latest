@@ -4,16 +4,27 @@ import BookRow from "./BookRow";
 
 
 class BooksTable extends Component{
+
+
+
+
     render(){
         var rows =[]
         var lastBookCategory = null
         this.props.books.map((book)=> {
 
             if (lastBookCategory !== book.bookCategory) {
+
                 rows.push(<BookCategoryRow category={book.bookCategory}/>);
             }
-            rows.push(<BookRow title={book.bookTitle} key={book.bookTitle}/>)
+            rows.push(<BookRow onMoving={this.moveToReading}
+                               title={book.bookTitle}
+                               key={book.bookTitle}/>
+
+
+            )
             lastBookCategory = book.bookCategory
+
 
 
         });

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import BookRow from "./BookRow";
+import BooksTable from "./BooksTable";
 
 class Search extends Component{
     state= {
@@ -21,27 +22,22 @@ class Search extends Component{
         else{
             showingBooks = this.props.books
         }
+
+
         return(
             <div>
-                {/*{JSON.stringify(this.state)}*/}
                 <input
                     type="text"
                     placeholder="Search for books"
                     value ={this.props.query}
                     onChange={ (event)=>this.updateQuery(event.target.value) }
                 />
-
                 <div>
-                    {showingBooks.map((book)=>(
-                        <p>
-                            {book.bookTitle}
-                        </p>
-                    ))}
+                    <BooksTable books={showingBooks}/>
                 </div>
-                {/*<div>*/}
-                    {/*{showingBooks}*/}
-                {/*</div>*/}
-
+                {/*<button onClick={()=>this.props.onShowing()}>*/}
+                    {/*Show read books!*/}
+                {/*</button>*/}
             </div>
 
         )

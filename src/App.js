@@ -5,6 +5,7 @@ import './App.css';
 import BooksTable from "./BooksTable";
 import ShowToRead from "./ShowToRead";
 import Search from "./Search";
+import BookRow from "./BookRow";
 
 
 
@@ -17,10 +18,16 @@ class App extends Component {
                 bookCategory: 'Read'
             },
             {
+                bookTitle: '48 Laws of Power',
+                bookAuthor: 'Random Author2',
+                bookCategory: 'Read'
+            },
+            {
                 bookTitle: 'The Selfish Gene',
                 bookAuthor: 'Richard Dawkins',
                 bookCategory: 'Reading'
             },
+
             {
                 bookTitle: 'Random Book',
                 bookAuthor: 'Random Author',
@@ -37,24 +44,38 @@ class App extends Component {
     }
     // showToRead = (book)=>{
     //     this.setState((state)=>{
-    //         BOOKS: state.BOOKS.map((book)=>(book.bookCategory === "To Read") )
+    //         BOOKS: state.BOOKS.filter((book)=>(book.bookCategory === "To Read") )
+    //     })
+    // }
+    // showingToRead = ()=>{
+    //     this.setState({
+    //         BOOKS: this.state.BOOKS.filter((book)=>(book.bookCategory === "Read") )
     //     })
     // }
     // updateQuery = (query)=>{
     //     this.setState( {query: query.trim()} )
     // }
+    moveToReading = (book)=>{
+        this.setState((state)=>{
+                BOOKS: this.state.BOOKS.map((book)=>((book.bookCategory) = "Reading" ))
+            }
+        )}
 
   render() {
 
 
+
     return (
         <div>
-            <Search
+            <BooksTable
                 books={this.state.BOOKS}
-                query={this.state.query}
+            {/*<button onClick={()=> this.props.onMoving}> Move to Reading</button>*/}
+                // query={this.state.query}
+                // onMovingToReading={this.moveToReading}
 
             />
-            <BooksTable books={this.state.BOOKS}/>
+
+
 
 
 
